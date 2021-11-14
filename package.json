@@ -1,5 +1,5 @@
 {
-  "name": "openotp-client",
+  "name": "openotd-client",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -68,4 +68,5 @@
     "*.{js,jsx,vue,ts,tsx}": ["vue-cli-service lint", "git add"]
   }
 }
+
 
