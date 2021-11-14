@@ -1,6 +1,6 @@
 <template>
-  <div id="app"> 
-      <ion-menu side="start" content-id="main-content">
+  <div id="app">
+    <ion-menu side="start" content-id="main-content">
       <ion-header>
         <ion-toolbar translucent>
           <ion-title>OpenOTD</ion-title>
@@ -8,12 +8,11 @@
       </ion-header>
       <ion-content>
         <ion-list>
-            
           <ion-item @click="navigate('/')">
             <ion-icon name="mail" slot="start"></ion-icon>
             <ion-label>Übersicht</ion-label>
-         </ion-item> 
-            
+          </ion-item>
+
           <ion-item @click="navigate('/accesses')">
             <ion-icon name="paper-plane" slot="start"></ion-icon>
             <ion-label>Zugriffe</ion-label>
@@ -40,69 +39,67 @@
         </ion-toolbar>
       </ion-header>
       <ion-content class="ion-padding">
-        
-  <ion-router-outlet id="main"></ion-router-outlet>
+        <ion-router-outlet id="main"></ion-router-outlet>
       </ion-content>
     </div>
-
   </div>
 </template>
-<style>
+<style lang="scss">
+@import "./style/_main.scss";
 .my-custom-menu {
   --width: 500px;
 }
 </style>
 
 <script>
-import { 
-  IonContent, 
-  IonHeader, 
-  IonItem, 
-  IonList, 
-  IonMenu, 
+import {
+  IonContent,
+  IonHeader,
+  IonItem,
+  IonList,
+  IonMenu,
   IonRouterOutlet,
-  IonTitle, 
+  IonTitle,
   IonToolbar,
-  menuController
-} from '@ionic/vue';
-import { defineComponent } from 'vue';
+  menuController,
+} from "@ionic/vue";
+import { defineComponent } from "vue";
 import { useRouter } from "vue-router";
 export default defineComponent({
   components: {
-    IonContent, 
-    IonHeader, 
-    IonItem, 
-    IonList, 
-    IonMenu, 
+    IonContent,
+    IonHeader,
+    IonItem,
+    IonList,
+    IonMenu,
     IonRouterOutlet,
-    IonTitle, 
-    IonToolbar
+    IonTitle,
+    IonToolbar,
   },
   methods: {
-      navigate(url) {
-          this.router.push(url)
-      },
+    navigate(url) {
+      this.router.push(url);
+    },
     openFirst() {
-      menuController.enable(true, 'first');
-      menuController.open('first');
+      menuController.enable(true, "first");
+      menuController.open("first");
     },
     openEnd() {
-      menuController.open('end');
+      menuController.open("end");
     },
     openCustom() {
-      menuController.enable(true, 'custom');
-      menuController.open('custom');
-    }
+      menuController.enable(true, "custom");
+      menuController.open("custom");
+    },
   },
-   setup() {
+  setup() {
     const router = useRouter();
     return { router };
   },
 });
 </script>
 <style lang="scss">
-
 :host {
-    text-transform: unset !important;
+  text-transform: unset !important;
 }
 </style>
