@@ -1,36 +1,71 @@
 {
   "name": "openotp-client",
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "vite",
-    "lint": "eslint --ext .ts,vue --ignore-path .gitignore . --fix",
-    "format": "prettier -w -u .",
-    "build": "vue-tsc --noEmit && vite build",
-    "serve": "vite preview"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit",
+    "test:e2e": "vue-cli-service test:e2e",
+    "lint": "vue-cli-service lint",
+    "android:run": "ionic cap run android -l --external",
+    "electron:add": "vue-cli-service build && npx cap add @capacitor-community/electron",
+    "electron:start": "npx cap open @capacitor-community/electron"
   },
   "dependencies": {
-    "balm-ui": "next",
-    "unplugin-vue-components": "0.17.2",
-    "vue": "^3.0.5",
-    "vuestic-ui": "^1.3.1"
+    "@capacitor-community/electron": "^4.0.3",
+    "@capacitor/android": "3.3.1",
+    "@capacitor/app": "1.0.6",
+    "@capacitor/camera": "^1.2.0",
+    "@capacitor/core": "3.3.1",
+    "@capacitor/filesystem": "^1.0.6",
+    "@capacitor/haptics": "1.1.3",
+    "@capacitor/keyboard": "1.1.3",
+    "@capacitor/status-bar": "1.0.6",
+    "@capacitor/storage": "^1.2.3",
+    "core-js": "^3.6.5",
+    "vue": "^3.2.21",
+    "vue-class-component": "^8.0.0-0",
+    "vue-router": "^4.0.12",
+    "vuex": "^4.0.0-0"
   },
   "devDependencies": {
-    "balm": "^3.9.0",
-    "element-plus": "1.2.0-beta.3",
-    "@typescript-eslint/eslint-plugin": "^4.25.0",
-    "@typescript-eslint/parser": "^4.25.0",
-    "@vitejs/plugin-vue": "^1.2.2",
-    "@vue/compiler-sfc": "^3.0.5",
-    "@vue/eslint-config-prettier": "^6.0.0",
-    "@vue/eslint-config-typescript": "^7.0.0",
-    "eslint": "^7.27.0",
-    "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-vue": "^7.10.0",
-    "prettier": "^2.3.0",
-    "typescript": "^4.3.2",
-    "vite": "^2.3.4",
-    "vue-tsc": "^0.0.24"
+    "@capacitor/cli": "3.3.1",
+    "@ionic/vue": "^6.0.0-rc.2",
+    "@ionic/vue-router": "^6.0.0-rc.2",
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^5.2.4",
+    "@types/node": "^16.11.7",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/parser": "^5.2.0",
+    "@vue/cli-plugin-typescript": "^4.5.15",
+    "@vue/cli-service": "4.5.15",
+    "@vue/compiler-sfc": "^3.0.0",
+    "@vue/eslint-config-standard": "^6.1.0",
+    "@vue/eslint-config-typescript": "^9.0.1",
+    "@vue/test-utils": "^2.0.0-0",
+    "chai": "^4.1.2",
+    "cypress": "^8.3.0",
+    "eslint": "^7.20.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "lint-staged": "^9.5.0",
+    "register-service-worker": "^1.7.2",
+    "sass": "^1.26.5",
+    "sass-loader": "^7.3.1",
+    "typescript": "^4.4.4",
+    "webpack": "4.24.0"
   },
-  "keywords": [],
-  "description": ""
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue,ts,tsx}": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  }
 }

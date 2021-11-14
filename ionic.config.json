@@ -1,0 +1,7 @@
+{
+  "name": "openotd-client",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}

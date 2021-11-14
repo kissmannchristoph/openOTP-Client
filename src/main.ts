@@ -1,11 +1,39 @@
-import { createApp } from "vue";
-import App from "./App.vue";
+import { IonicVue } from '@ionic/vue';
+import { createApp } from 'vue'
+import App from './App.vue'
+import './registerServiceWorker'
+import router from './router'
+import store from './store'
 
-import { VuesticPlugin } from 'vuestic-ui' // <-
-import 'vuestic-ui/dist/vuestic-ui.css' // <-
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
 
-const app = createApp(App);
 
-app.use(VuesticPlugin);
+/* Core CSS required for Ionic components to work properly */
+import '@ionic/vue/css/core.css';
 
-app.mount("#app");
+/* Basic CSS for apps built with Ionic */
+import '@ionic/vue/css/normalize.css';
+import '@ionic/vue/css/structure.css';
+import '@ionic/vue/css/typography.css';
+
+/* Optional CSS utils that can be commented out */
+import '@ionic/vue/css/padding.css';
+import '@ionic/vue/css/float-elements.css';
+import '@ionic/vue/css/text-alignment.css';
+import '@ionic/vue/css/text-transformation.css';
+import '@ionic/vue/css/flex-utils.css';
+import '@ionic/vue/css/display.css';
+
+import './style/_main.css';
+
+const app = createApp(App)
+    .use(IonicVue)
+    .use(router)
+    .use(store);
+
+    router.isReady().then(() => {
+        app.mount('#app');
+        defineCustomElements(window);
+      });
+
+//createApp(App).use(store).use(router).mount('#app')
